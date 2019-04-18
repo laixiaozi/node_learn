@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WebSocket</title>
+</head>
+<body>
+<input id ="d" vlaue="test" /><button id="bt" onclick="sendmsg()">猜测是</button>
+    <script type="text/javascript">
+        var ws = new WebSocket("ws://127.0.0.1:3000");
+        ws.onopen= function(){
+            console.log("open");
+            ws.send("send test")
+        };
+        ws.onmessage= function(m){
+            console.log(m.data)
+        };
+        ws.onclose  = function(){
+            console.log("close")
+        };
+    console.log("websocket test")
+        function sendmsg() {
+             var val = document.getElementById("d").value;
+             console.log(val)
+        }
+    </script>
+</body>
+</html>
